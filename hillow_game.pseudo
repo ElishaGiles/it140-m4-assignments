@@ -11,19 +11,49 @@
 START hilow_game
 
     # Establish a valid guessing range.
-    TODO: Obtain the lower and upper bounds.
-    TODO: Repeat as needed until the bounds satisfy the requirement.
+    Display "Enter the lower bound: "
+    Input lower_bound
+    Display "Enter the upper bound: "
+    Input upper_bound
+    WHILE lower_bound is greater than or equal to upper_bound
+        Display "Invalid entry. The lower bound must be less than the upper bound."
+        Re-Display "Enter the lower bound: "
+        Input lower_bound
+        Re-Display "Enter the upper bound: "
+    END WHILE
 
     # Establish the number the player is trying to guess.
-    TODO: Generate the required random number from the valid range.
+    Generate a random number in the range between lower_bound and upper_bound
+    Store random number in variable random_number
 
     # Play the game.
-    TODO: Obtain and validate a guess using the selected bounds.
-    TODO: Repeat the required game behavior until the correct guess.
-        TODO: Compare a valid guess and provide the required feedback.
-        TODO: Obtain and validate another guess when play continues.
+    Display "Enter your guess between the lower and upper bounds: "
+    Input guess
+    WHILE guess is less than lower_bound OR is greater than upper_bound
+        Display: "Your input guess is not within the set bounds. Please try again."
+        Input guess
+    END WHILE
 
+    WHILE guess is not equal to random_number
+        IF guess is less than random_number
+            Display "Your guess is too low."
+        ELSE IF guess is greater than random_number
+            Display "Your guess is too high."
+        ELSE
+            Display "Congrats! You got it right!"
+        END IF
+
+        IF guess is not equal to random_number
+            Display "Guess again: "
+            Input guess
+
+            WHILE guess is less than lower_bound OR greater than upper_bound
+                Display "Your input guess is not within the set bounds. Please try again."
+                Input guess
+            END WHILE
+        END IF
+    END WHILE
 END hilow_game
 
 # === References ===
-# TODO: Add references for sources you used, or delete this line if unused.
+GeeksforGeeks. (2025, July 23). Python while loop. https://www.geeksforgeeks.org/python/python-while-loop/
